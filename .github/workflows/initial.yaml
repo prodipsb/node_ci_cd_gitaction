@@ -7,12 +7,12 @@ on:
 
 jobs:
   node-job:
-    runs-on: ububtu-latest
+    runs-on: ubuntu-latest
     steps:
       - run: echo "Node CI/CD Started"
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Run a one-line scipt
+        uses: actions/checkout@v3
+      - name: Run a one-line script
         run: echo "Hello world!"
       - name: Run a multiline script
         run: |
@@ -23,7 +23,6 @@ jobs:
       - name: Print GitHub Context
         env: 
           GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTENT"
+        run: echo "$GITHUB_CONTEXT"
       - name: Action Completed
         run: echo "Action Completed"
-
