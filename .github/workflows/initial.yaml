@@ -1,0 +1,29 @@
+name: Node js CI/CD
+
+on: 
+  push:
+    branches:
+      - main
+
+jobs:
+  node-job:
+    runs-on: ububtu-latest
+    steps:
+      - run: echo "Node CI/CD Started"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run a one-line scipt
+        run: echo "Hello world!"
+      - name: Run a multiline script
+        run: |
+          echo Add other actions to build
+          echo test, and deploy your project
+      - name: List files
+        run: ls ${{ github.workspace }}
+      - name: Print GitHub Context
+        env: 
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTENT"
+      - name: Action Completed
+        run: echo "Action Completed"
+
